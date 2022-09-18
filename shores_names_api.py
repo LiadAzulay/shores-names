@@ -23,7 +23,7 @@ async def root(shore_starts):
     pat = re.compile(shore_starts, re.I)
 
     shores = list(shore_db.find({ "shore_name": {'$regex': pat}}))
-    for shore in shores:
-        del shore['_id']
-    print(shores)
+    if shore:
+        for shore in shores:
+            del shore['_id']
     return shores
